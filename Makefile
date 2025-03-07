@@ -3,7 +3,7 @@ CFLAGS= -Wall -Wextra -Werror
 
 NAME=fractol
 
-SRC=
+SRC=main.c
 OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
