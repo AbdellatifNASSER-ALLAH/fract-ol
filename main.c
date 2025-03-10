@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 22:11:17 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/10 11:39:33 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/10 17:00:11 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,35 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void	draw_something(t_data **img, int high, int width)
+void	draw_something(t_data *img, int height, int width)
 {
 	t_point	center;
+	t_point	p;
 	int	i;
+	int	j;
 
-	center.x = high / 2;
+	center.x = height / 2;
 	center.y = width / 2;
 	i = 0;
-	while (i < high / 2 - 10)
+	while (i < height / 2 - 10)
 	{	
-		my_mlx_pixel_put(img, center.x, center.y + i, 345543);
-		my_mlx_pixel_put(img, center.x, center.y - i, 345543);
-		my_mlx_pixel_put(img, center.x + i, center.y, 3465543);
-		my_mlx_pixel_put(img, center.x - i, center.y, 3465543);
+		my_mlx_pixel_put(img, center.x, center.y + i, 0x00ff0000);
+		my_mlx_pixel_put(img, center.x, center.y - i, 0x00ff0000);
+		my_mlx_pixel_put(img, center.x + i, center.y, 0x00ff0000);
+		my_mlx_pixel_put(img, center.x - i, center.y, 0x00ff0000);
+		i++;
+	}
+	p.x = center.x - 20;
+	p.y = center.y - 20;
+	i = 0;
+	while (i < 40)
+	{	
+		j = 0;
+		while(j < 40)
+		{
+			my_mlx_pixel_put(img, p.x + j, p.y + i, 0x0000a500);
+			j++;
+		}
 		i++;
 	}
 }
