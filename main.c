@@ -6,17 +6,11 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 22:11:17 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/10 17:00:11 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/10 19:20:01 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-typedef struct	s_point
-{
-	int	x;
-	int y;
-}	t_point;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -44,13 +38,13 @@ void	draw_something(t_data *img, int height, int width)
 		my_mlx_pixel_put(img, center.x - i, center.y, 0x00ff0000);
 		i++;
 	}
-	p.x = center.x - 20;
-	p.y = center.y - 20;
+	p.x = center.x - 50;
+	p.y = center.y - 50;
 	i = 0;
-	while (i < 40)
+	while (i < 100)
 	{	
 		j = 0;
-		while(j < 40)
+		while(j < 100)
 		{
 			my_mlx_pixel_put(img, p.x + j, p.y + i, 0x0000a500);
 			j++;
