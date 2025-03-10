@@ -1,5 +1,6 @@
 CC=cc
 CFLAGS= -Wall -Wextra -Werror
+LFLAGS = -I/usr/local/include -L/usr/local/lib -lmlx -lXext -lX11 -lm
 
 NAME=fractol
 
@@ -9,10 +10,12 @@ OBJ=$(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CLFAGS) $^ -o $@
+ 	#ADD THE C FLAGS HERE !!!!
+	$(CC) $^ $(LFLAGS) -o $@
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+ 	#ADD THE C FLAGS HERE !!!!
+	$(CC) -c $< -o $@
 
 clean: 
 	rm -rf $(OBJ)
