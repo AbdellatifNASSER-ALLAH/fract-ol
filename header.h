@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 22:12:11 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/10 19:19:33 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/14 18:08:16 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 #include <unistd.h>
 #include <mlx.h>
+
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}	t_vars;
 
 typedef struct	s_data {
 	void	*img;
