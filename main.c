@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 22:11:17 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/15 17:25:01 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/15 21:02:54 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,9 @@
 
 int	main()
 {
+	t_vars vars;
+
+	init_vars(&vars);
+	mlx_loop(vars.mlx);
 	return (0);
 }
