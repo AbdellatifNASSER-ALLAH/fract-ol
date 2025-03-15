@@ -4,18 +4,16 @@ LFLAGS = -I/usr/local/include -L/usr/local/lib -lmlx -lXext -lX11 -lm
 
 NAME=fractol
 
-SRC=main.c
+SRC=main.c utils.c
 OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
- 	#ADD THE C FLAGS HERE !!!!
-	$(CC) $^ $(LFLAGS) -o $@
+	$(CC) $^ $(LFLAGS) $(CFLAGS) -o $@
 
 %.o: %.c
- 	#ADD THE C FLAGS HERE !!!!
-	$(CC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean: 
 	rm -rf $(OBJ)
