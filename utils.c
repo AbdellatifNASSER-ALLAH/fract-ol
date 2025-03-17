@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:17:49 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 03:57:00 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/17 14:52:19 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,17 @@ static int	ft_strcmp(const char *s1, const char *s2)
 	return (*s1 == *s2);
 }
 
-void	ft_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
-	*(unsigned int*)dst = color;
-}
-
 int	valid_promot(int ac, char **av)
 {
-	if (ac == 2 || ac == 4)
-	{
-		if (ac == 2 && ft_strcmp(av[1], "mandelbort"))
-			return (1);
-		if (ac == 4 && ft_strcmp(av[1], "julia"))
-			return (1);
-	}
+	if (ac == 2 && ft_strcmp(av[1], "mandelbort"))
+		return (1);
+	if (ac == 4 && ft_strcmp(av[1], "julia"))
+		return (1);
+	write(2, "Invalid argument                       \n", 40);
+	write(2, " ------------ Usage ------------------ \n", 40);
+	write(2, "|  ./fractol mandelbort               |\n", 40);
+	write(2, "|            Or:                      |\n", 40);
+	write(2, "| ./fractol julia <real> <i>          |\n", 40);
+	write(2, " ------------------------------------- \n", 40);
 	return (0);
 }

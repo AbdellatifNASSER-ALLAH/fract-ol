@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 22:11:17 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 03:07:49 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/17 15:01:26 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,13 @@
 
 int	main(int ac, char **av)
 {
-	if (valid_promot(ac, av))
-	{
+	t_fractal	fractal;
 
-	}
-	else
-	{
-		write(2, "Syntax error\n", 13);
-		exit(1);
-	}
+	if (!valid_promot(ac, av))
+		return (1);
+	fractal.name = av[1];
+	init_fractal(&fractal);//TODO
+	render_fractal(&fractal);//TODO
+	mlx_loop(fraclat.mlx);//TODO
 	return (0);
 }

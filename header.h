@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 22:12:11 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 03:34:35 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:04:58 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,18 @@ typedef struct	s_fractal {
 	void	*mlx;
 	void	*win;
 	t_img	img;
+	int	num_inter;
+	double	escapce_value;
+	double	shift_x;
+	double	shift_y;
+	double	zoom;
+	double	julia_x;
+	double	julia_y;
 }	t_fractal;
+
+// *** fractal functions ***
+void	init_fractal(t_fractal *fractal);
+void	render_fractal(t_fractal *fractal);
 
 // *** check promot ***
 int valid_promot(int ac, char **av);

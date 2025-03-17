@@ -4,7 +4,7 @@ LFLAGS = -I/usr/local/include -L/usr/local/lib -lmlx -lXext -lX11 -lm
 
 NAME=fractol
 
-SRC=init.c  julia.c  main.c  mandelbrot.c  utils.c
+SRC=init.c main.c utils.c
 OBJ=$(SRC:.c=.o)
 
 all: $(NAME)
