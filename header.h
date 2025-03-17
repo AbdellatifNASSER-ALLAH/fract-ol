@@ -60,13 +60,13 @@ void		init_fractal(t_fractal *fractal);
 void		render_fractal(t_fractal *fractal);
 
 // *** events ***
-int	close_handler(t_fractal *fractal);
+int			close_handler(t_fractal *fractal);
 
 // *** utils ***
 int			ft_strcmp(const char *s1, const char *s2);
 int			valid_promot(int ac, char **av);
 double		to_double(const char *s, double intger, double fractional);
-void	clean_up(t_fractal *fractal);
+void		clean_up(t_fractal *fractal);
 
 // *** math utils ***
 double		map(double unscaled_num, double new_min, double new_max,

@@ -21,7 +21,7 @@ static void	malloc_error(t_fractal *fractal)
 
 static void	events_hook(t_fractal *fractal)
 {
-	mlx_hook(fractal->win, 17, 1L<<17, close_handler, fractal);
+	mlx_hook(fractal->win, 17, 1L << 17, close_handler, fractal);
 }
 
 static void	init_data(t_fractal *fractal)
