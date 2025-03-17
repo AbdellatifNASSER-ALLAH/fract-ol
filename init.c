@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 15:03:00 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 17:55:25 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/17 21:17:51 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,14 @@
 
 static void	malloc_error(t_fractal *fractal)
 {
-	if (fractal->img.img)
-		mlx_destroy_image(fractal->mlx, fractal->img.img);
-	if (fractal->win)
-		mlx_destroy_window(fractal->mlx, fractal->win);
-	if (fractal->mlx)
-	{
-		mlx_destroy_display(fractal->mlx);
-		free(fractal->mlx);
-	}
+	clean_up(fractal);
 	perror("Malloc error");
 	exit(1);
+}
+
+static void	events_hook(t_fractal *fractal)
+{
+	mlx_hook(fractal->win, 17, 1L<<17, close_handler, fractal);
 }
 
 static void	init_data(t_fractal *fractal)
@@ -50,5 +47,5 @@ void	init_fractal(t_fractal *fractal)
 	fractal->img.addr = mlx_get_data_addr(fractal->img.img, &fractal->img.bpp,
 			&fractal->img.line_length, &fractal->img.endian);
 	init_data(fractal);
-	//TODO:events hook
+	events_hook(fractal);
 }

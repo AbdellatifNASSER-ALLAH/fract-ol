@@ -6,36 +6,44 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:43:39 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 18:06:55 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/17 20:55:31 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+static t_point	choose(t_point z, t_fractal *fractal)
+{
+	if (ft_strcmp(fractal->name, "mandelbort"))
+		return (z);
+	z.x = fractal->julia_x;
+	z.y = fractal->julia_y;
+	return (z);
+}
 
 static void	my_put_pixel(int x, int y, t_img *img, int color)
 {
 	char	*offset;
 
 	offset = img->addr + (y * img->line_length + x * (img->bpp / 8));
-	*(unsigned int*)offset = color;
+	*(unsigned int *)offset = color;
 }
 
 static void	do_pixel(int x, int y, t_fractal *fractal)
 {
 	t_point	z;
 	t_point	c;
-	int	color;
-	int	i;
-	
+	int		color;
+	int		i;
+
 	z.x = (map(x, -2, 2, WIDTH) * fractal->zoom) + fractal->shift_x;
 	z.y = (map(y, 2, -2, HEIGHT) * fractal->zoom) + fractal->shift_y;
-	c.x = z.x;
-	c.y = z.y;
+	c = choose(z, fractal);
 	i = 0;
 	while (i < fractal->num_iter)
 	{
-		z = sum_complex(square_complex(z) , c);
-		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value) 
+		z = sum_complex(square_complex(z), c);
+		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
 			color = map(i, BLAK, WHITE, fractal->num_iter);
 			my_put_pixel(x, y, &fractal->img, color);
