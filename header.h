@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 22:12:11 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 16:04:58 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/17 17:56:01 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 #define HEADER_H
 
 #include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <mlx.h>
 
 #define HEIGHT 800
 #define WIDTH 800
+
+// *** Colors ***
+#define	WHITE 0xFFFFFF
+#define	BLAK 0x000000
 
 typedef struct	s_point {
 	double	x;
@@ -37,8 +43,8 @@ typedef struct	s_fractal {
 	void	*mlx;
 	void	*win;
 	t_img	img;
-	int	num_inter;
-	double	escapce_value;
+	int	num_iter;
+	double	escape_value;
 	double	shift_x;
 	double	shift_y;
 	double	zoom;
@@ -51,5 +57,12 @@ void	init_fractal(t_fractal *fractal);
 void	render_fractal(t_fractal *fractal);
 
 // *** check promot ***
+int	ft_strcmp(const char *s1, const char *s2);
 int valid_promot(int ac, char **av);
+
+// *** math utils ***
+double map(double unscaled_num, double new_min, double new_max, double old_max);
+t_point   sum_complex(t_point z1, t_point z2);
+t_point   square_complex(t_point z);
+
 #endif

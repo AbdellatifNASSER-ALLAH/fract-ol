@@ -6,13 +6,13 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:17:49 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 14:52:19 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/17 16:59:48 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static int	ft_strcmp(const char *s1, const char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	while (*s1 && *s2 && *s1 == *s2)
 	{

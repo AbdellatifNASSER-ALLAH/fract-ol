@@ -1,26 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   math.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/07 22:11:17 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 17:56:30 by abdnasse         ###   ########.fr       */
+/*   Created: 2025/03/17 17:16:59 by abdnasse          #+#    #+#             */
+/*   Updated: 2025/03/17 17:26:23 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	main(int ac, char **av)
+double map(double unscaled_num, double new_min, double new_max, double old_max)
 {
-	t_fractal	fractal;
+	return ((new_max - new_min) * unscaled_num / old_max + new_min);
+}
 
-	if (!valid_promot(ac, av))
-		return (1);
-	fractal.name = av[1];
-	init_fractal(&fractal);//TODO
-	render_fractal(&fractal);//TODO
-	mlx_loop(fractal.mlx);//TODO
-	return (0);
+t_point   sum_complex(t_point z1, t_point z2)
+{
+	t_point   result;
+
+	result.x = z1.x + z2.x;
+	result.y = z1.y + z2.y;
+	return (result);
+}
+
+t_point   square_complex(t_point z)
+{
+	t_point   result;
+
+	result.x = (z.x * z.x) - (z.y * z.y);
+	result.y = 2 * z.x * z.y;
+	return (result);
 }
