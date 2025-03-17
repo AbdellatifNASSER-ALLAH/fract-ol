@@ -6,17 +6,22 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 22:11:17 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/15 21:02:54 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/17 03:07:49 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	main()
+int	main(int ac, char **av)
 {
-	t_vars vars;
+	if (valid_promot(ac, av))
+	{
 
-	init_vars(&vars);
-	mlx_loop(vars.mlx);
+	}
+	else
+	{
+		write(2, "Syntax error\n", 13);
+		exit(1);
+	}
 	return (0);
 }
