@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 15:03:00 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 21:17:51 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/18 03:30:15 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 
 static void	malloc_error(t_fractal *fractal)
 {
-	clean_up(fractal);
 	perror("Malloc error");
-	exit(1);
+	clean_up(fractal, 1);
 }
 
 static void	events_hook(t_fractal *fractal)
 {
 	mlx_hook(fractal->win, 17, 1L << 17, close_handler, fractal);
+	mlx_hook(fractal->win, 2, 1L << 0, key_handler, fractal);
+	mlx_hook(fractal->win, 4, 1L << 2, mouse_handler, fractal);
 }
 
 static void	init_data(t_fractal *fractal)
 {
-	fractal->num_iter = 42;
+	fractal->num_iter = 40;
 	fractal->escape_value = 4;
 	fractal->shift_x = 0.0;
 	fractal->shift_y = 0.0;
 	fractal->zoom = 1.0;
+	fractal->theme = 0;
 }
 
 void	init_fractal(t_fractal *fractal)

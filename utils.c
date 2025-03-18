@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/15 17:17:49 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 21:12:07 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/18 00:40:41 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ double	to_double(const char *s, double intger, double fractional)
 	return ((intger + fractional) * sign);
 }
 
-void	clean_up(t_fractal *fractal)
+void	clean_up(t_fractal *fractal, int err)
 {
 	if (fractal->img.img)
 		mlx_destroy_image(fractal->mlx, fractal->img.img);
@@ -98,4 +98,5 @@ void	clean_up(t_fractal *fractal)
 		mlx_destroy_display(fractal->mlx);
 		free(fractal->mlx);
 	}
+	exit(err);
 }

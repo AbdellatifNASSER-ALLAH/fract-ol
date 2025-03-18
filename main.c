@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 22:11:17 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 20:20:03 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/18 02:19:36 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int ac, char **av)
 	}
 	init_fractal(&fractal);
 	render_fractal(&fractal);
+	mlx_loop_hook(fractal.mlx, render_next, &fractal);
 	mlx_loop(fractal.mlx);
 	return (0);
 }

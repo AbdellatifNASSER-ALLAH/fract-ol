@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 16:43:39 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/17 20:55:31 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/18 03:02:21 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ static void	do_pixel(int x, int y, t_fractal *fractal)
 		z = sum_complex(square_complex(z), c);
 		if ((z.x * z.x) + (z.y * z.y) > fractal->escape_value)
 		{
-			color = map(i, BLAK, WHITE, fractal->num_iter);
+			color = ft_degree_color(fractal, i);
 			my_put_pixel(x, y, &fractal->img, color);
 			return ;
 		}
 		i++;
 	}
-	my_put_pixel(x, y, &fractal->img, WHITE);
+	my_put_pixel(x, y, &fractal->img, BLAK);
 }
 
 void	render_fractal(t_fractal *fractal)
