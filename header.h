@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 22:12:11 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/18 03:07:17 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/18 17:51:54 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@
 # define DOWN 65364
 # define PLUS 61
 # define MINUS 45
+# define RUN 114
+# define STOP 115
+# define RESET 65288
 
 typedef struct s_point
 {
@@ -63,17 +66,20 @@ typedef struct s_fractal
 	double	zoom;
 	double	julia_x;
 	double	julia_y;
+	int		julia_move;
 }			t_fractal;
 
 // *** fractal functions ***
 void		init_fractal(t_fractal *fractal);
 void		render_fractal(t_fractal *fractal);
+void		init_data(t_fractal *fractal);
 
 // *** events ***
 int			render_next(t_fractal *fractal);
 int			close_handler(t_fractal *fractal);
 int			key_handler(int keycode, t_fractal *fractal);
 int			mouse_handler(int button, int x, int y, t_fractal *fractal);
+int			julia_handler(int x, int y, t_fractal *fractal);
 
 // *** utils ***
 int			ft_strcmp(const char *s1, const char *s2);

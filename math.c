@@ -6,7 +6,7 @@
 /*   By: abdnasse <abdnasse@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/17 17:16:59 by abdnasse          #+#    #+#             */
-/*   Updated: 2025/03/18 03:40:05 by abdnasse         ###   ########.fr       */
+/*   Updated: 2025/03/18 16:54:59 by abdnasse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,23 @@ t_point	square_complex(t_point z)
 	return (result);
 }
 
+static int	create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
+}
+
 int	ft_degree_color(t_fractal *fractal, int iter)
 {
-	if (fractal->theme == 0)
-		return (0x00FFFF00 * iter + WHITE);
-	if (fractal->theme == 1)
-		return (0x00FF00FF * iter);
-	iter += fractal->theme;
-	if (iter % 2 != 0)
-		return (255 * iter / 98 + 234567);
-	return (255 * iter / fractal->num_iter + WHITE);
+	int		r;
+	int		g;
+	int		b;
+	double	ratio;
+
+	if (iter == fractal->num_iter)
+		return (create_trgb(0, 0, 0, 0));
+	ratio = (double)iter / fractal->theme;
+	r = (int)(9 * (1 - ratio) * ratio * ratio * ratio * 255);
+	g = (int)(15 * (1 - ratio) * (1 - ratio) * ratio * ratio * 255);
+	b = (int)(8.5 * (1 - ratio) * (1 - ratio) * (1 - ratio) * ratio * 255);
+	return (create_trgb(0, r, g, b));
 }
